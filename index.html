@@ -10,7 +10,7 @@
             --bg-deep: #070b14;
             --bg-card: #0d1527;
             --bg-card-hover: #131f38;
-            --accent: #d4af37; /* Old Money Gold */
+            --accent: #d4af37;
             --accent-glow: rgba(212, 175, 55, 0.15);
             --text-main: #f1f5f9;
             --text-muted: #94a3b8;
@@ -42,11 +42,13 @@
         }
 
         header {
-            padding: 30px 0;
+            padding: 24px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .logo {
@@ -64,7 +66,7 @@
 
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -80,9 +82,8 @@
             color: var(--accent);
         }
 
-        /* Hero Section */
         .hero {
-            padding: 100px 0 80px;
+            padding: 80px 0 60px;
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
@@ -94,7 +95,7 @@
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 50px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
             color: var(--accent);
             text-transform: uppercase;
@@ -105,7 +106,7 @@
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 5vw, 4.2rem);
+            font-size: clamp(2.2rem, 5vw, 4.2rem);
             font-weight: 700;
             margin-bottom: 24px;
             letter-spacing: -0.5px;
@@ -118,7 +119,7 @@
         }
 
         .hero p {
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             color: var(--text-muted);
             margin-bottom: 40px;
             line-height: 1.8;
@@ -140,6 +141,7 @@
             transition: var(--transition);
             cursor: pointer;
             display: inline-block;
+            text-align: center;
         }
         .btn-primary {
             background: var(--accent);
@@ -164,7 +166,6 @@
             transform: translateY(-2px);
         }
 
-        /* Sections */
         section {
             padding: 80px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -184,18 +185,17 @@
             margin: 0 auto 60px;
         }
 
-        /* Philosophy & Grid */
         .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
         }
 
         .card {
             background: var(--bg-card);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 12px;
-            padding: 40px 30px;
+            padding: 36px 24px;
             transition: var(--transition);
         }
 
@@ -223,23 +223,15 @@
             margin-bottom: 20px;
         }
 
-        /* Portfolio Featured Project */
         .project-showcase {
             background: linear-gradient(135deg, var(--bg-card), var(--bg-deep));
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 50px;
+            padding: 40px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
             align-items: center;
-        }
-
-        @media(max-width: 768px) {
-            .project-showcase {
-                grid-template-columns: 1fr;
-                padding: 30px;
-            }
         }
 
         .project-info h3 {
@@ -269,10 +261,9 @@
             font-weight: 500;
         }
 
-        /* Contacts */
         .contacts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
             max-width: 700px;
             margin: 0 auto;
@@ -294,6 +285,7 @@
             background: var(--bg-card-hover);
             transform: translateY(-3px);
         }
+
         .contact-card h4 {
             margin-bottom: 8px;
             color: var(--accent);
@@ -303,14 +295,45 @@
         .contact-card span {
             color: var(--text-muted);
             font-size: 0.9rem;
+            word-break: break-all;
         }
-
         footer {
             text-align: center;
             padding: 40px 0;
             color: var(--text-muted);
             font-size: 0.85rem;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .nav-links {
+                gap: 16px;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 50px 0 40px;
+            }
+
+            .cta-group {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .project-showcase {
+                grid-template-columns: 1fr;
+                padding: 24px;
+            }
         }
     </style>
 </head>
@@ -327,7 +350,6 @@
             </ul>
         </header>
 
-        <!-- Hero -->
         <section class="hero" style="border: none;">
             <div class="badge">Independent Web Architect</div>
             <h1>Engineering <span>Digital Luxury</span> & High Performance</h1>
@@ -338,7 +360,6 @@
             </div>
         </section>
 
-        <!-- Philosophy / About -->
         <section id="about">
             <h2 class="section-title">The Philosophy</h2>
             <p class="section-desc">Moving beyond transient trends. Focused on absolute reliability, pristine architecture, and strict digital sovereignty.</p>
@@ -362,7 +383,6 @@
             </div>
         </section>
 
-        <!-- Services -->
         <section id="services">
             <h2 class="section-title">Capabilities</h2>
             <p class="section-desc">Tailored digital solutions engineered for discerning brands and private clients worldwide.</p>
@@ -382,7 +402,7 @@
                 </div>
             </div>
         </section>
-        <!-- Portfolio Showcase -->
+
         <section id="portfolio">
             <h2 class="section-title">Featured Case Study</h2>
             <p class="section-desc">A benchmark of quality, successfully launched and validated.</p>
@@ -398,13 +418,12 @@
                     </div>
                     <a href="https://melodic-bienenstitch-c40a00.netlify.app" target="_blank" class="btn btn-primary">View Live Project →</a>
                 </div>
-                <div style="background: rgba(212, 175, 55, 0.03); border: 1px dashed var(--border-color); border-radius: 12px; height: 260px; display: flex; align-items: center; justify-content: center; color: var(--accent); font-family: 'Playfair Display', serif; font-size: 1.5rem; text-align: center; padding: 20px;">
+                <div style="background: rgba(212, 175, 55, 0.03); border: 1px dashed var(--border-color); border-radius: 12px; height: 200px; display: flex; align-items: center; justify-content: center; color: var(--accent); font-family: 'Playfair Display', serif; font-size: 1.3rem; text-align: center; padding: 20px;">
                     Heritage & Luxury Digital Experience
                 </div>
             </div>
         </section>
 
-        <!-- Contact -->
         <section id="contact">
             <h2 class="section-title">Initiate Contact</h2>
             <p class="section-desc">Ready to build something exceptional? Reach out directly via secure channels.</p>
