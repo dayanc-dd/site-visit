@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dayanc — Independent High-Performance Web Development</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #070b14;
+            --bg-card: #0d1527;
+            --bg-card-hover: #131f38;
+            --accent: #d4af37; /* Old Money Gold */
+            --accent-glow: rgba(212, 175, 55, 0.15);
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border-color: rgba(212, 175, 55, 0.2);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(13, 21, 39, 0.8) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(15, 28, 54, 0.6) 0%, transparent 40%);
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            padding: 30px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4.2rem);
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            display: inline-block;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: #070b14;
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            background: #e6c555;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .section-desc {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 60px;
+        }
+
+        /* Philosophy & Grid */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 40px 30px;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            border-color: var(--border-color);
+            background: var(--bg-card-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        /* Portfolio Featured Project */
+        .project-showcase {
+            background: linear-gradient(135deg, var(--bg-card), var(--bg-deep));
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media(max-width: 768px) {
+            .project-showcase {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+        }
+
+        .project-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .project-info p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--accent);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Contacts */
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            border-color: var(--accent);
+            background: var(--bg-card-hover);
+            transform: translateY(-3px);
+        }
+        .contact-card h4 {
+            margin-bottom: 8px;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .contact-card span {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <a href="#" class="logo">DAYANC<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">Philosophy</a></li>
+                <li><a href="#services">Expertise</a></li>
+                <li><a href="#portfolio">Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </header>
+
+        <!-- Hero -->
+        <section class="hero" style="border: none;">
+            <div class="badge">Independent Web Architect</div>
+            <h1>Engineering <span>Digital Luxury</span> & High Performance</h1>
+            <p>I build immaculate, lightning-fast static web experiences for international clients. Blending high-end minimalist aesthetics with uncompromising security and cryptographic settlements.</p>
+            <div class="cta-group">
+                <a href="#contact" class="btn btn-primary">Inquire for Project</a>
+                <a href="#portfolio" class="btn btn-secondary">Explore Case Study</a>
+            </div>
+        </section>
+
+        <!-- Philosophy / About -->
+        <section id="about">
+            <h2 class="section-title">The Philosophy</h2>
+            <p class="section-desc">Moving beyond transient trends. Focused on absolute reliability, pristine architecture, and strict digital sovereignty.</p>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Peak Performance</h3>
+                    <p>Pure, hand-crafted static architecture ensuring instant load speeds, zero bloat, and seamless user experiences across all devices.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🛡️</div>
+                    <h3>Security First</h3>
+                    <p>Rooted in professional cybersecurity and OSINT principles, eliminating vulnerabilities before deployment even begins.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💎</div>
+                    <h3>Old Money Aesthetic</h3>
+                    <p>Refined dark palettes, restrained typography, and timeless design choices that instantly project authority and high status.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services">
+            <h2 class="section-title">Capabilities</h2>
+            <p class="section-desc">Tailored digital solutions engineered for discerning brands and private clients worldwide.</p>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Custom Landing Pages</h3>
+                    <p>Bespoke high-conversion web pages designed with immaculate attention to detail, typography, and interactive polish.</p>
+                </div>
+                <div class="card">
+                    <h3>Global Deployments</h3>
+                    <p>Fast, robust hosting configurations via modern infrastructure (Netlify/GitHub), guaranteeing 99.9% uptime and global reach.</p>
+                </div>
+                <div class="card">
+                    <h3>Crypto Settlements</h3>
+                    <p>Modern, frictionless financial workflows supporting international payments and secure cryptocurrency transactions.</p>
+                </div>
+            </div>
+        </section>
+        <!-- Portfolio Showcase -->
+        <section id="portfolio">
+            <h2 class="section-title">Featured Case Study</h2>
+            <p class="section-desc">A benchmark of quality, successfully launched and validated.</p>
+
+            <div class="project-showcase">
+                <div class="project-info">
+                    <h3>Eagle & Vine</h3>
+                    <p>An elite heritage & luxury clothing brand concept website. Built with custom HTML/CSS, optimized for instant delivery, and deployed globally with pristine execution.</p>
+                    <div class="tags">
+                        <span class="tag">Static Architecture</span>
+                        <span class="tag">UI/UX Design</span>
+                        <span class="tag">Global CDN</span>
+                    </div>
+                    <a href="https://melodic-bienenstitch-c40a00.netlify.app" target="_blank" class="btn btn-primary">View Live Project →</a>
+                </div>
+                <div style="background: rgba(212, 175, 55, 0.03); border: 1px dashed var(--border-color); border-radius: 12px; height: 260px; display: flex; align-items: center; justify-content: center; color: var(--accent); font-family: 'Playfair Display', serif; font-size: 1.5rem; text-align: center; padding: 20px;">
+                    Heritage & Luxury Digital Experience
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <h2 class="section-title">Initiate Contact</h2>
+            <p class="section-desc">Ready to build something exceptional? Reach out directly via secure channels.</p>
+
+            <div class="contacts-grid">
+                <a href="https://t.me/D_3182" target="_blank" class="contact-card">
+                    <h4>Telegram</h4>
+                    <span>@D_3182</span>
+                </a>
+                <a href="mailto:dayanc.dev0717@gmail.com" class="contact-card">
+                    <h4>Direct Email</h4>
+                    <span>dayanc.dev0717@gmail.com</span>
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Dayanc. All rights reserved. Engineered with precision.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
